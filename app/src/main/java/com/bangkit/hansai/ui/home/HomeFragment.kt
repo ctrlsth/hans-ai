@@ -1,6 +1,5 @@
 package com.bangkit.hansai.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.hansai.databinding.FragmentHomeBinding
-import com.bangkit.hansai.ui.SettingsActivity
 
 class HomeFragment : Fragment() {
 

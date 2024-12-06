@@ -35,4 +35,8 @@
     <string name="action_button">Action Button</string>
     <string name="searchbar_hint">What would you like to eat?</string>
     <string name="title_search">Search</string>
+    <string name="add_meal">Add a meal</string>
+    <string name="add_log_title">Add log title</string>
+    <string name="add_summary">Add summary</string>
+    <string name="save_log">Save Log</string>
 </resources>
