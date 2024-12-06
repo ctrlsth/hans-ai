@@ -27,5 +27,12 @@
     <string name="navigate_next">Navigate Next</string>
     <string name="log_emoji">Log Emoji</string>
     <string name="expand_details">Expand Details</string>
-    <string name="fab_content_desc">create new entry</string>
+    <string name="fab_content_desc">Add New Entry</string>
+    <string name="food_thumbnail">Food Thumbnail</string>
+    <string name="knife_and_fork_emoji">🍴 </string>
+    <string name="alarm_clock_emoji">⏰ </string>
+    <string name="dot_divider">" • "</string>
+    <string name="action_button">Action Button</string>
+    <string name="searchbar_hint">What would you like to eat?</string>
+    <string name="title_search">Search</string>
 </resources>

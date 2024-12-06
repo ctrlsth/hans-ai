@@ -5,19 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.recipes.RecipesFragment">
-    
-    <!-- Note: A RecyclerView can also be used -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Scrollable content -->
-        <TextView
-            android:id="@+id/textRecipes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title_recipes" />
+    <!-- Contains Recycler View -->
+    <include layout="@layout/content_recipes_main" />
 
-    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/fab_content_desc"
+        app:srcCompat="@drawable/ic_add" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,5 +6,5 @@
         android:title="@string/title_settings"
         android:contentDescription="@string/title_settings"
         android:icon="@drawable/ic_settings"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

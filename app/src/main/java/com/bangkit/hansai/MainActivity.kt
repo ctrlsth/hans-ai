@@ -1,9 +1,12 @@
 package com.bangkit.hansai
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -72,6 +75,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_app_bar, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
     }
 }
