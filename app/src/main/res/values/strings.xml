@@ -23,4 +23,9 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="navigate_before">Navigate Before</string>
+    <string name="navigate_next">Navigate Next</string>
+    <string name="log_emoji">Log Emoji</string>
+    <string name="expand_details">Expand Details</string>
+    <string name="fab_content_desc">create new entry</string>
 </resources>
