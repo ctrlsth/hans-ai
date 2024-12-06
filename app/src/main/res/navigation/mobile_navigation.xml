@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bangkit.hansai.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_track"
+        android:name="com.bangkit.hansai.ui.track.TrackFragment"
+        android:label="@string/title_track"
+        tools:layout="@layout/fragment_track" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bangkit.hansai.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_recipes"
+        android:name="com.bangkit.hansai.ui.recipes.RecipesFragment"
+        android:label="@string/title_recipes"
+        tools:layout="@layout/fragment_recipes" />
 </navigation>
