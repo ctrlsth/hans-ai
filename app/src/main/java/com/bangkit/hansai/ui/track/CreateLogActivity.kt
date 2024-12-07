@@ -1,4 +1,4 @@
-package com.bangkit.hansai.ui.createlog
+package com.bangkit.hansai.ui.track
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
