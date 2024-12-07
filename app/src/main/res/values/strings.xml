@@ -39,4 +39,9 @@
     <string name="add_log_title">Add log title</string>
     <string name="add_summary">Add summary</string>
     <string name="save_log">Save Log</string>
+    <string name="daily_limit">Daily Limit:</string>
+    <string name="minus">-</string>
+    <string name="current_intake">Current Intake:</string>
+    <string name="equal">=</string>
+    <string name="total_left">Total Left:</string>
 </resources>

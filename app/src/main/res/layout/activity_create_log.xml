@@ -76,8 +76,15 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                tools:itemCount="4" />
+                tools:itemCount="4"
+                tools:listitem="@layout/item_recipe" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                layout="@layout/item_add_meal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -89,8 +96,15 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                tools:itemCount="4" />
+                tools:itemCount="4"
+                tools:listitem="@layout/item_recipe" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                layout="@layout/item_add_meal" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -102,60 +116,150 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                tools:itemCount="4" />
+                tools:itemCount="4"
+                tools:listitem="@layout/item_recipe" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                layout="@layout/item_add_meal" />
 
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:orientation="vertical"
         android:background="?attr/colorSurfaceContainerHigh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/dailyLimitLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:text="@string/daily_limit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/minus" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                tools:text="Total Calories: " />
+        <TextView
+            android:id="@+id/dailyLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/saveButton"
+            app:layout_constraintStart_toStartOf="@id/dailyLimitLabel"
+            app:layout_constraintTop_toBottomOf="@id/dailyLimitLabel"
+            tools:text="1500 kcal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="?attr/colorGreen"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                tools:text="1500" />
+        <TextView
+            android:id="@+id/minus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LogoLarge"
+            android:textColor="@color/md_theme_onSurface"
+            android:textAlignment="center"
+            android:text="@string/minus"
+            app:layout_constraintStart_toEndOf="@id/dailyLimitLabel"
+            app:layout_constraintEnd_toStartOf="@id/totalIntakeLabel"
+            app:layout_constraintTop_toTopOf="@id/dailyLimitLabel"
+            app:layout_constraintBottom_toBottomOf="@id/dailyLimit" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                tools:text=" / 2000 kcal" />
+        <TextView
+            android:id="@+id/totalIntakeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:text="@string/current_intake"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/minus"
+            app:layout_constraintEnd_toStartOf="@id/equal" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/totalIntake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="?attr/colorGreen"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            tools:text="1500 kcal"
+            app:layout_constraintTop_toBottomOf="@id/totalIntakeLabel"
+            app:layout_constraintStart_toStartOf="@id/totalIntakeLabel" />
+
+        <TextView
+            android:id="@+id/equal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LogoLarge"
+            android:textColor="@color/md_theme_onSurface"
+            android:textAlignment="center"
+            android:text="@string/equal"
+            app:layout_constraintStart_toEndOf="@id/totalIntakeLabel"
+            app:layout_constraintEnd_toStartOf="@id/totalLeftLabel"
+            app:layout_constraintTop_toTopOf="@id/totalIntakeLabel"
+            app:layout_constraintBottom_toBottomOf="@id/totalIntake" />
+
+        <TextView
+            android:id="@+id/totalLeftLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:text="@string/total_left"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/equal"
+            app:layout_constraintEnd_toEndOf="@id/statusEmoji" />
+
+        <TextView
+            android:id="@+id/totalLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            tools:text="0 kcal"
+            app:layout_constraintTop_toBottomOf="@id/totalLeftLabel"
+            app:layout_constraintStart_toStartOf="@id/totalLeftLabel" />
+
+        <TextView
+            android:id="@+id/statusEmoji"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@id/totalLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/totalLeftLabel"
+            app:layout_constraintTop_toTopOf="@id/totalLeftLabel"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="👍🏼" />
 
         <Button
+            android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/save_log"
             app:icon="@drawable/ic_inbox"
-            app:iconGravity="textStart" />
+            app:iconGravity="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
