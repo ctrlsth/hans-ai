@@ -1,16 +1,14 @@
-package com.bangkit.hansai
+package com.bangkit.hansai.ui
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bangkit.hansai.R
 import com.bangkit.hansai.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
