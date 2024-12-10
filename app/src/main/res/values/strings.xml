@@ -50,4 +50,20 @@
     <string name="total_calorie">"Total Calories: "</string>
     <string name="chat_hint">Resep nasi liwet rendah kalori</string>
     <string name="send_button">Send Button</string>
+    <string name="ingredients_hint">1. 500 gr Nasi Putih\n2. 2 butir telur ayam\n3. …</string>
+    <string name="steps_hint">1. Iris 5 siung bawang merah dan putih\n2. Pisahkan kuning telur dengan putih telur\n3. …</string>
+    <string name="carbs">Carbs (gr):</string>
+    <string name="protein">Protein (gr):</string>
+    <string name="fat">Fat (gr):</string>
+    <string name="zero">0</string>
+    <string name="save_recipe">Save Recipe</string>
+    <string name="today">Today</string>
+    <string name="base_goal">Today\'s Goal</string>
+    <string name="intake">Current Intake</string>
+    <string name="remainder">Remaining</string>
+    <string name="calories">Calories</string>
+    <string name="macronutrients">Macronutrients</string>
+    <string name="title_carbs">Carbohydrate</string>
+    <string name="title_protein">Protein</string>
+    <string name="title_fat">Fat</string>
 </resources>

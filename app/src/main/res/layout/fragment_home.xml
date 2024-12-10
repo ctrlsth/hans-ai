@@ -1,23 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
     tools:context=".ui.home.HomeFragment">
-    
-    <!-- Note: A RecyclerView can also be used -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Scrollable content -->
-        <TextView
-            android:id="@+id/textHome"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        tools:text="Hello, User!" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+        tools:text="Here are your stats for today!" />
+
+    <!-- Calories Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="?attr/colorPrimaryContainer"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_home" />
+            android:padding="16dp"
+            android:orientation="vertical">
 
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <TextView
+                android:id="@+id/headerCal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:text="@string/calories"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/today"
+                android:src="@drawable/ic_today"
+                app:layout_constraintTop_toBottomOf="@id/headerCal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/today" />
+
+            <TextView
+                android:id="@+id/today"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/base_goal"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_today"
+                app:layout_constraintTop_toTopOf="@id/icon_today"
+                app:layout_constraintBottom_toBottomOf="@id/icon_today"
+                app:layout_constraintEnd_toStartOf="@id/value_today" />
+
+            <TextView
+                android:id="@+id/value_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                tools:text="2000 kcal"
+                app:layout_constraintTop_toTopOf="@id/icon_today"
+                app:layout_constraintBottom_toBottomOf="@id/icon_today"
+                app:layout_constraintStart_toEndOf="@id/today"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_intake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/intake"
+                android:src="@drawable/ic_intake"
+                app:layout_constraintTop_toBottomOf="@id/icon_today"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/intake" />
+
+            <TextView
+                android:id="@+id/intake"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/intake"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_intake"
+                app:layout_constraintTop_toTopOf="@id/icon_intake"
+                app:layout_constraintBottom_toBottomOf="@id/icon_intake"
+                app:layout_constraintEnd_toStartOf="@id/value_intake" />
+
+            <TextView
+                android:id="@+id/value_intake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                tools:text="2000 kcal"
+                app:layout_constraintTop_toTopOf="@id/icon_intake"
+                app:layout_constraintBottom_toBottomOf="@id/icon_intake"
+                app:layout_constraintStart_toEndOf="@id/intake"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/calDiv"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginVertical="16dp"
+                app:layout_constraintTop_toBottomOf="@id/icon_intake"
+                app:layout_constraintBottom_toTopOf="@id/icon_remainder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_remainder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/remainder"
+                android:src="@drawable/ic_info"
+                app:layout_constraintTop_toBottomOf="@id/calDiv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/remainder"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/remainder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/remainder"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_remainder"
+                app:layout_constraintTop_toTopOf="@id/icon_remainder"
+                app:layout_constraintBottom_toBottomOf="@id/icon_remainder"
+                app:layout_constraintEnd_toStartOf="@id/value_remainder" />
+
+            <TextView
+                android:id="@+id/value_remainder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textStyle="bold"
+                tools:text="0 kcal"
+                app:layout_constraintTop_toTopOf="@id/icon_remainder"
+                app:layout_constraintBottom_toBottomOf="@id/icon_remainder"
+                app:layout_constraintStart_toEndOf="@id/remainder"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Macronutrients Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="?attr/colorPrimaryContainer"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headerMac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:text="@string/macronutrients"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_carbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/carbs"
+                android:src="@drawable/ic_rice_bowl"
+                app:layout_constraintTop_toBottomOf="@id/headerMac"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/carbs" />
+
+            <TextView
+                android:id="@+id/carbs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/title_carbs"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_carbs"
+                app:layout_constraintTop_toTopOf="@id/icon_carbs"
+                app:layout_constraintBottom_toBottomOf="@id/icon_carbs"
+                app:layout_constraintEnd_toStartOf="@id/value_carbs" />
+
+            <TextView
+                android:id="@+id/value_carbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textStyle="bold"
+                tools:text="100 gr"
+                app:layout_constraintTop_toTopOf="@id/icon_carbs"
+                app:layout_constraintBottom_toBottomOf="@id/icon_carbs"
+                app:layout_constraintStart_toEndOf="@id/carbs"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/protein"
+                android:src="@drawable/ic_egg"
+                app:layout_constraintTop_toBottomOf="@id/icon_carbs"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/protein" />
+
+            <TextView
+                android:id="@+id/protein"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/title_protein"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_protein"
+                app:layout_constraintTop_toTopOf="@id/icon_protein"
+                app:layout_constraintBottom_toBottomOf="@id/icon_protein"
+                app:layout_constraintEnd_toStartOf="@id/value_protein" />
+
+            <TextView
+                android:id="@+id/value_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textStyle="bold"
+                tools:text="100 gr"
+                app:layout_constraintTop_toTopOf="@id/icon_protein"
+                app:layout_constraintBottom_toBottomOf="@id/icon_protein"
+                app:layout_constraintStart_toEndOf="@id/protein"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/title_fat"
+                android:src="@drawable/ic_fast_food"
+                app:layout_constraintTop_toBottomOf="@id/icon_protein"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fat"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/fat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/title_fat"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toEndOf="@id/icon_fat"
+                app:layout_constraintTop_toTopOf="@id/icon_fat"
+                app:layout_constraintBottom_toBottomOf="@id/icon_fat"
+                app:layout_constraintEnd_toStartOf="@id/value_fat" />
+
+            <TextView
+                android:id="@+id/value_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textStyle="bold"
+                tools:text="100 gr"
+                app:layout_constraintTop_toTopOf="@id/icon_fat"
+                app:layout_constraintBottom_toBottomOf="@id/icon_fat"
+                app:layout_constraintStart_toEndOf="@id/fat"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
