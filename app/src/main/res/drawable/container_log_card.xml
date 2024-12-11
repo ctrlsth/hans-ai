@@ -13,7 +13,7 @@
             />
         <path
             android:pathData="M0 0V132H380V0"
-            android:fillColor="?attr/colorSurface"
+            android:fillColor="?attr/colorOnPrimary"
             />
         <path
             android:pathData="M12 0H368C374.627 0 380 5.37258 380 12V120C380 126.627 374.627 132 368 132H12C5.37258 132 0 126.627 0 120V12C0 5.37258 5.37258 0 12 0Z"
