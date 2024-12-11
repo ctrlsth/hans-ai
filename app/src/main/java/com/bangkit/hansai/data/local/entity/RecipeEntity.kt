@@ -27,19 +27,13 @@ class RecipeEntity(
     var steps: String,
 
     @field:ColumnInfo(name = "carbs")
-    var carbs: Int,
+    var carbs: Double,
 
     @field:ColumnInfo(name = "protein")
-    var protein: Int,
+    var protein: Double,
 
     @field:ColumnInfo(name = "fat")
-    var fat: Int,
-
-    @field:ColumnInfo(name = "duration")
-    var duration: Int,
-
-    @field:ColumnInfo(name = "date")
-    var date: Date,
+    var fat: Double,
 
     @field:ColumnInfo(name = "last_update")
     var lastUpdate: Date

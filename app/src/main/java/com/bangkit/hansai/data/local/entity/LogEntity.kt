@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 import java.util.Date
 
 @Parcelize
-@Entity(tableName = "recipe")
+@Entity(tableName = "log")
 class LogEntity(
     @field:ColumnInfo(name = "id")
     @PrimaryKey
@@ -32,17 +32,23 @@ class LogEntity(
     @field:ColumnInfo(name = "dinner")
     var dinner: List<Int>,
 
+    @field:ColumnInfo(name = "base_goal")
+    var baseGoal: Double,
+
+    @field:ColumnInfo(name = "current_weight")
+    var currentWeight: Double,
+
     @field:ColumnInfo(name = "calories")
-    var calories: Int,
+    var calories: Double,
 
     @field:ColumnInfo(name = "carbs")
-    var carbs: Int,
+    var carbs: Double,
 
     @field:ColumnInfo(name = "protein")
-    var protein: Int,
+    var protein: Double,
 
     @field:ColumnInfo(name = "fat")
-    var fat: Int,
+    var fat: Double,
 
     @field:ColumnInfo(name = "last_update")
     var lastUpdate: Date

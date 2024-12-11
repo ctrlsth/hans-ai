@@ -1,4 +1,4 @@
-package com.bangkit.hansai.ui.recipes
+package com.bangkit.hansai.ui.track
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,27 +8,31 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.hansai.R
-import com.bangkit.hansai.data.local.entity.RecipeEntity
-import com.bangkit.hansai.databinding.ItemRecipeBinding
+import com.bangkit.hansai.data.local.entity.LogEntity
+import com.bangkit.hansai.databinding.ItemLogBinding
+import java.text.SimpleDateFormat
 import java.util.Locale
 
-class RecipesAdapter : ListAdapter<RecipeEntity, RecipesAdapter.RecipesViewHolder>(DIFF_CALLBACK) {
+class LogAdapter : ListAdapter<LogEntity, LogAdapter.LogViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class RecipesViewHolder(
-        val binding: ItemRecipeBinding
+    class LogViewHolder(
+        val binding: ItemLogBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(recipe: RecipeEntity) {
-            // set up view here
-            binding.recipeTitle.text = recipe.title
-            val totalCalories =
-                recipe.protein * 4 + recipe.carbs * 4 + recipe.fat * 9
-            binding.calories.text = String.format(Locale.getDefault(), "%.1f kcal", totalCalories)
+        fun bind(log: LogEntity) {
+            binding.logDay.text = SimpleDateFormat("EEE", Locale.getDefault()).format(log.date)
+            binding.logDate.text = SimpleDateFormat("dd", Locale.getDefault()).format(log.date)
+
+            binding.logWeight.text = String.format(Locale.getDefault(), "%.1f", log.currentWeight)
+            binding.logCalories.text = String.format(Locale.getDefault(), "%.1f", log.calories)
+            binding.logBaseGoal.text = String.format(Locale.getDefault(), " / %.1f ", log.baseGoal)
+            binding.logTitle.text = log.title
+
             binding.actionButton.setOnClickListener { view ->
                 val popupMenu = PopupMenu(view.context, binding.actionButton)
                 popupMenu.inflate(R.menu.rv_item_menu)
@@ -54,34 +58,34 @@ class RecipesAdapter : ListAdapter<RecipeEntity, RecipesAdapter.RecipesViewHolde
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipesViewHolder {
-        val binding = ItemRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecipesViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogViewHolder {
+        val binding = ItemLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return LogViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
-        val recipe = getItem(position)
-        Log.d("RecipesAdapter", "Binding recipe: $recipe")
-        holder.bind(recipe)
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(recipe) }
+    override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
+        val log = getItem(position)
+        Log.d("LogAdapter", "Binding log: $log")
+        holder.bind(log)
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(log) }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(recipe: RecipeEntity)
+        fun onItemClicked(log: LogEntity)
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RecipeEntity>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LogEntity>() {
             override fun areItemsTheSame(
-                oldItem: RecipeEntity,
-                newItem: RecipeEntity
+                oldItem: LogEntity,
+                newItem: LogEntity
             ): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: RecipeEntity,
-                newItem: RecipeEntity
+                oldItem: LogEntity,
+                newItem: LogEntity
             ): Boolean {
                 return oldItem.lastUpdate == newItem.lastUpdate
             }

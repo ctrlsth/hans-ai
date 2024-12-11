@@ -63,7 +63,8 @@ class ViewRecipeActivity : AppCompatActivity() {
 
             val totalCalories =
                 recipe.protein * 4 + recipe.carbs * 4 + recipe.fat * 9
-            content.totalCalorie.text = String.format(Locale.getDefault(), "%d kcal", totalCalories)
+            content.totalCalorie.text =
+                String.format(Locale.getDefault(), "%.1f kcal", totalCalories)
 
             content.saveButton.apply {
                 text = getString(R.string.redirect_button)
