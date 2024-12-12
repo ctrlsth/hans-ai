@@ -3,6 +3,7 @@ package com.bangkit.hansai.data.local.preferences
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -24,6 +25,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     private val currentWeightKey = intPreferencesKey("userCurrentWeight")
     private val targetWeightKey = intPreferencesKey("userTargetWeight")
     private val ageKey = intPreferencesKey("userAge")
+    private val currentCalorieKey = doublePreferencesKey("userCurrentCalorie")
 
     fun getUserId(): Flow<String> {
         return dataStore.data.map { preferences ->
@@ -37,18 +39,6 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    fun getUserDisplayName(): Flow<String> {
-        return dataStore.data.map { preferences ->
-            preferences[displayNameKey] ?: ""
-        }
-    }
-
-    suspend fun saveUserDisplayName(displayName: String) {
-        dataStore.edit { preferences ->
-            preferences[displayNameKey] = displayName
-        }
-    }
-
     fun getUserToken(): Flow<String> {
         return dataStore.data.map { preferences ->
             preferences[tokenKey] ?: ""
@@ -58,6 +48,18 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     suspend fun saveUserToken(token: String) {
         dataStore.edit { preferences ->
             preferences[tokenKey] = token
+        }
+    }
+
+    fun getUserDisplayName(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[displayNameKey] ?: ""
+        }
+    }
+
+    suspend fun saveUserDisplayName(displayName: String) {
+        dataStore.edit { preferences ->
+            preferences[displayNameKey] = displayName
         }
     }
 
@@ -142,6 +144,18 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     suspend fun saveUserAge(age: Int) {
         dataStore.edit { preferences ->
             preferences[ageKey] = age
+        }
+    }
+
+    fun getUserCurrentCalorie(): Flow<Double> {
+        return dataStore.data.map { preferences ->
+            preferences[currentCalorieKey] ?: 0.0
+        }
+    }
+
+    suspend fun saveUserCurrentCalorie(currentCalorie: Double) {
+        dataStore.edit { preferences ->
+            preferences[currentCalorieKey] = currentCalorie
         }
     }
 

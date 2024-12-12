@@ -44,7 +44,7 @@ data class LogItems(
 data class Log(
 
     @field:SerializedName("totalCarbs")
-    val totalCarbs: Int,
+    val totalCarbs: Double,
 
     @field:SerializedName("date")
     val date: String,
@@ -56,25 +56,25 @@ data class Log(
     val logTitle: String,
 
     @field:SerializedName("totalFat")
-    val totalFat: Int,
+    val totalFat: Double,
 
     @field:SerializedName("totalProtein")
-    val totalProtein: Int,
+    val totalProtein: Double,
 
     @field:SerializedName("description")
     val description: String,
 
     @field:SerializedName("baseGOal")
-    val baseGOal: Int,
+    val baseGOal: Double,
 
     @field:SerializedName("weight")
-    val weight: Int,
+    val weight: Double,
 
     @field:SerializedName("id")
     val id: String,
 
     @field:SerializedName("totalCalories")
-    val totalCalories: Int,
+    val totalCalories: Double,
 
     @field:SerializedName("userId")
     val userId: String

@@ -15,7 +15,7 @@ class HomeViewModel(private val userRepository: UserRepository) : ViewModel() {
         login()
     }
 
-    private val _login = MutableLiveData<Boolean>(false)
+    private val _login = MutableLiveData(false)
     val login: LiveData<Boolean> = _login
 
     private fun login() {

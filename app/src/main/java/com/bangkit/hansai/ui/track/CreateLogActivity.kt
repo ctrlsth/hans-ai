@@ -82,11 +82,13 @@ class CreateLogActivity : AppCompatActivity() {
         }
 
         Log.d("CreateLogActivity", log.toString())
+        /*
         if (log != null) {
             setupAdapter(breakfastAdapter, trackViewModel.dummyRecipes, log.breakfast)
             setupAdapter(lunchAdapter, trackViewModel.dummyRecipes, log.lunch)
             setupAdapter(dinnerAdapter, trackViewModel.dummyRecipes, log.dinner)
         }
+         */
 
         content.addMealButtonBreakfast.cardAddMeal.setOnClickListener {
             // Open Search & Select Recipe Activity
@@ -119,7 +121,7 @@ class CreateLogActivity : AppCompatActivity() {
         logCategory: List<Int>
     ) {
         adapter.apply {
-            submitList(recipes.filter { it.id in logCategory })
+//            submitList(recipes.filter { it.id in logCategory })
             setOnItemClickCallback(object : RecipesAdapter.OnItemClickCallback {
                 override fun onItemClicked(recipe: RecipeEntity) {
                     val intent = Intent(this@CreateLogActivity, ViewRecipeActivity::class.java)

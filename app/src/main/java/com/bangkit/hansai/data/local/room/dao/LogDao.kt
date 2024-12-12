@@ -13,8 +13,8 @@ interface LogDao {
     @Query("SELECT * FROM log ORDER BY id ASC")
     fun getAll(): LiveData<List<LogEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(log: LogEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(log: List<LogEntity>)
 
     @Update
     suspend fun update(log: LogEntity)

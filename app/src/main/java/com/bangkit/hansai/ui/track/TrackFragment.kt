@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hansai.data.local.entity.LogEntity
 import com.bangkit.hansai.databinding.FragmentTrackBinding
+import com.bangkit.hansai.ui.factory.LogViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,11 +26,17 @@ class TrackFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val trackViewModel =
-            ViewModelProvider(this)[TrackViewModel::class.java]
-
         _binding = FragmentTrackBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val factory: LogViewModelFactory = LogViewModelFactory.getInstance(requireActivity())
+        val trackViewModel: TrackViewModel by viewModels {
+            factory
+        }
 
         binding.floatingActionButton.setOnClickListener {
             val intent = Intent(requireContext(), CreateLogActivity::class.java)
@@ -56,7 +63,7 @@ class TrackFragment : Fragment() {
         }
 
         logAdapter.apply {
-            submitList(trackViewModel.dummy)
+//            submitList(trackViewModel.dummy)
             setOnItemClickCallback(object : LogAdapter.OnItemClickCallback {
                 override fun onItemClicked(log: LogEntity) {
                     val intent = Intent(requireContext(), CreateLogActivity::class.java)
@@ -65,8 +72,6 @@ class TrackFragment : Fragment() {
                 }
             })
         }
-
-        return root
     }
 
     override fun onDestroyView() {

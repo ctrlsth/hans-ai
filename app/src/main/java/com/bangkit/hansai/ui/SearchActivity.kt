@@ -55,7 +55,7 @@ class SearchActivity : AppCompatActivity() {
     companion object {
         private val dummyRecipes = listOf(
             RecipeEntity(
-                id = 1,
+                id = "a",
                 name = "Spaghetti Bolognese",
                 ingredients = "Spaghetti, Ground Beef, Tomato Sauce, Onion, Garlic",
                 instructions = "1. Cook spaghetti\n2. Prepare sauce\n3. Combine and serve",
@@ -65,7 +65,7 @@ class SearchActivity : AppCompatActivity() {
                 calories = 2000.0
             ),
             RecipeEntity(
-                id = 2,
+                id = "ab",
                 name = "Chicken Salad",
                 ingredients = "Chicken Breast, Lettuce, Tomato, Cucumber, Olive Oil",
                 instructions = "1. Grill chicken\n2. Chop vegetables\n3. Mix and drizzle dressing",
@@ -75,7 +75,7 @@ class SearchActivity : AppCompatActivity() {
                 calories = 2000.0
             ),
             RecipeEntity(
-                id = 3,
+                id = "abc",
                 name = "Pancakes",
                 ingredients = "Flour, Eggs, Milk, Butter, Sugar",
                 instructions = "1. Mix ingredients\n2. Cook on griddle\n3. Serve with syrup",
@@ -85,7 +85,7 @@ class SearchActivity : AppCompatActivity() {
                 calories = 2000.0
             ),
             RecipeEntity(
-                id = 4,
+                id = "abcd",
                 name = "Vegetable Stir Fry",
                 ingredients = "Broccoli, Carrot, Bell Pepper, Soy Sauce, Garlic",
                 instructions = "1. Chop vegetables\n2. Stir-fry with sauce\n3. Serve hot",
@@ -95,7 +95,7 @@ class SearchActivity : AppCompatActivity() {
                 calories = 2000.0
             ),
             RecipeEntity(
-                id = 5,
+                id = "abcde",
                 name = "Beef Burger",
                 ingredients = "Ground Beef, Bun, Lettuce, Tomato, Cheese",
                 instructions = "1. Form patty and grill\n2. Assemble burger\n3. Serve with fries",

@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 class RecipeEntity(
     @field:ColumnInfo(name = "id")
     @PrimaryKey
-    var id: Int,
+    var id: String,
 
     @field:ColumnInfo(name = "name")
     var name: String,

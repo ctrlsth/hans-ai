@@ -12,7 +12,7 @@ import java.util.Date
 class LogEntity(
     @field:ColumnInfo(name = "id")
     @PrimaryKey
-    var id: Int,
+    var id: String,
 
     @field:ColumnInfo(name = "logTitle")
     var title: String,
@@ -24,13 +24,13 @@ class LogEntity(
     var date: Date,
 
     @field:ColumnInfo(name = "breakfast")
-    var breakfast: List<Int>,
+    var breakfast: List<String>,
 
     @field:ColumnInfo(name = "lunch")
-    var lunch: List<Int>,
+    var lunch: List<String>,
 
     @field:ColumnInfo(name = "dinner")
-    var dinner: List<Int>,
+    var dinner: List<String>,
 
     @field:ColumnInfo(name = "base_goal")
     var baseGoal: Double,

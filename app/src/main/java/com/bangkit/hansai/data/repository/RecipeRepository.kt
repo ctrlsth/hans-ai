@@ -3,43 +3,68 @@ package com.bangkit.hansai.data.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.bangkit.hansai.data.local.entity.RecipeEntity
+import com.bangkit.hansai.data.local.room.dao.RecipeDao
 import com.bangkit.hansai.data.remote.request.CreateRecipeRequest
 import com.bangkit.hansai.data.remote.request.GenRecipeRequest
 import com.bangkit.hansai.data.remote.response.GenRecipe
-import com.bangkit.hansai.data.remote.response.RecipesResponse
 import com.bangkit.hansai.data.remote.retrofit.ApiService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class RecipeRepository private constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val recipeDao: RecipeDao
 ) {
-    fun getRecipes(name: String? = null): LiveData<Result<RecipesResponse>> = liveData {
+
+    fun getRecipes(name: String? = null): LiveData<Result<List<RecipeEntity>>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.getRecipes(name)
             if (response.data.isEmpty()) {
                 emit(Result.Error("No data found"))
             } else {
-                emit(Result.Success(response))
+                val recipeList = response.data.map { recipe ->
+                    RecipeEntity(
+                        id = recipe.id,
+                        name = recipe.name,
+                        ingredients = recipe.ingredients,
+                        instructions = recipe.instructions,
+                        carbs = recipe.carbs,
+                        protein = recipe.protein,
+                        fat = recipe.fat,
+                        calories = recipe.calories
+                    )
+                }
+                withContext(Dispatchers.IO) {
+                    recipeDao.insert(recipeList)
+                }
+                liveData {
+                    emit(Result.Success(recipeList))
+                }
             }
         } catch (e: Exception) {
+            Log.d("RecipeRepository", e.toString())
             emit(Result.Error(e.message.toString()))
         }
     }
 
-    suspend fun createRecipes(reqBody: CreateRecipeRequest): Result<String> {
+    suspend fun createRecipe(reqBody: CreateRecipeRequest): Result<String> {
         return try {
             val response = apiService.createRecipe(reqBody)
             if (response.isSuccess) {
                 Result.Success(response.data?.id ?: "")
             } else {
+                Log.d("RecipeRepository", response.messages.toString())
                 Result.Error(response.messages.toString())
             }
         } catch (e: Exception) {
+            Log.d("RecipeRepository", e.toString())
             Result.Error(e.message.toString())
         }
     }
 
-    fun generateRecipes(reqBody: GenRecipeRequest): LiveData<Result<GenRecipe>> = liveData {
+    fun generateRecipe(reqBody: GenRecipeRequest): LiveData<Result<GenRecipe>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.generateRecipe(reqBody)
@@ -58,10 +83,11 @@ class RecipeRepository private constructor(
         @Volatile
         private var instance: RecipeRepository? = null
         fun getInstance(
-            apiService: ApiService
+            apiService: ApiService,
+            recipeDao: RecipeDao
         ): RecipeRepository =
             instance ?: synchronized(this) {
-                instance ?: RecipeRepository(apiService)
+                instance ?: RecipeRepository(apiService, recipeDao)
             }.also { instance = it }
     }
 }
