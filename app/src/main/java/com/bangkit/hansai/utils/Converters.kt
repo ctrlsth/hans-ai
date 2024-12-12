@@ -20,15 +20,14 @@ class Converters {
         return date?.let { dateFormat.format(it) }
     }
 
-
     @TypeConverter
-    fun fromMealList(meal: List<Int>): String {
+    fun fromMealList(meal: List<String>): String {
         val gson = Gson()
         return gson.toJson(meal)
     }
 
     @TypeConverter
-    fun toMealList(mealString: String): List<Int> {
+    fun toMealList(mealString: String): List<String> {
         val gson = Gson()
         val type = object : TypeToken<List<Int>>() {}.type
         return gson.fromJson(mealString, type)

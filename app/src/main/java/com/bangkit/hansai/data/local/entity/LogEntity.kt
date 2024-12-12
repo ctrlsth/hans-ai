@@ -4,6 +4,8 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.bangkit.hansai.utils.Converters
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 
