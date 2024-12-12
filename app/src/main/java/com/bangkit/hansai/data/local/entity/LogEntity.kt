@@ -14,7 +14,7 @@ class LogEntity(
     @PrimaryKey
     var id: Int,
 
-    @field:ColumnInfo(name = "title")
+    @field:ColumnInfo(name = "logTitle")
     var title: String,
 
     @field:ColumnInfo(name = "summary")
@@ -35,22 +35,18 @@ class LogEntity(
     @field:ColumnInfo(name = "base_goal")
     var baseGoal: Double,
 
-    @field:ColumnInfo(name = "current_weight")
-    var currentWeight: Double,
+    @field:ColumnInfo(name = "weight")
+    var weight: Double,
 
-    @field:ColumnInfo(name = "calories")
-    var calories: Double,
+    @field:ColumnInfo(name = "totalCalories")
+    var totalCalories: Double,
 
-    @field:ColumnInfo(name = "carbs")
-    var carbs: Double,
+    @field:ColumnInfo(name = "totalCarbs")
+    var totalCarbs: Double,
 
-    @field:ColumnInfo(name = "protein")
-    var protein: Double,
+    @field:ColumnInfo(name = "totalProtein")
+    var totalProtein: Double,
 
-    @field:ColumnInfo(name = "fat")
-    var fat: Double,
-
-    @field:ColumnInfo(name = "last_update")
-    var lastUpdate: Date
-
+    @field:ColumnInfo(name = "totalFat")
+    var totalFat: Double,
 ) : Parcelable

@@ -28,8 +28,8 @@ class LogAdapter : ListAdapter<LogEntity, LogAdapter.LogViewHolder>(DIFF_CALLBAC
             binding.logDay.text = SimpleDateFormat("EEE", Locale.getDefault()).format(log.date)
             binding.logDate.text = SimpleDateFormat("dd", Locale.getDefault()).format(log.date)
 
-            binding.logWeight.text = String.format(Locale.getDefault(), "%.1f", log.currentWeight)
-            binding.logCalories.text = String.format(Locale.getDefault(), "%.1f", log.calories)
+            binding.logWeight.text = String.format(Locale.getDefault(), "%.1f", log.weight)
+            binding.logCalories.text = String.format(Locale.getDefault(), "%.1f", log.totalCalories)
             binding.logBaseGoal.text = String.format(Locale.getDefault(), " / %.1f ", log.baseGoal)
             binding.logTitle.text = log.title
 
@@ -87,7 +87,7 @@ class LogAdapter : ListAdapter<LogEntity, LogAdapter.LogViewHolder>(DIFF_CALLBAC
                 oldItem: LogEntity,
                 newItem: LogEntity
             ): Boolean {
-                return oldItem.lastUpdate == newItem.lastUpdate
+                return oldItem.date == newItem.date
             }
         }
     }

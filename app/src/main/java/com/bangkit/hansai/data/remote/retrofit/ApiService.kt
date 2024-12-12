@@ -6,12 +6,15 @@ import com.bangkit.hansai.data.remote.request.LoginRequest
 import com.bangkit.hansai.data.remote.request.PredictCalorieRequest
 import com.bangkit.hansai.data.remote.request.SaveLogRequest
 import com.bangkit.hansai.data.remote.request.SaveRecipeRequest
+import com.bangkit.hansai.data.remote.response.CreateRecipeResponse
 import com.bangkit.hansai.data.remote.response.GeneratedResponse
 import com.bangkit.hansai.data.remote.response.LogResponse
 import com.bangkit.hansai.data.remote.response.LoginResponse
 import com.bangkit.hansai.data.remote.response.PredictResponse
 import com.bangkit.hansai.data.remote.response.RecipesResponse
+import com.bangkit.hansai.data.remote.response.SaveLogResponse
 import com.bangkit.hansai.data.remote.response.UserResponse
+import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -25,7 +28,7 @@ interface ApiService {
     ): LoginResponse
 
     @GET("users/{id}")
-    suspend fun getUser(@Query("id") id: String): UserResponse
+    suspend fun getUser(@Path("id") id: String): UserResponse
 
     @GET("recipes")
     suspend fun getRecipes(
@@ -33,7 +36,7 @@ interface ApiService {
     ): RecipesResponse
 
     @POST("recipes")
-    suspend fun createRecipe(@Body reqBody: CreateRecipeRequest)
+    suspend fun createRecipe(@Body reqBody: CreateRecipeRequest): CreateRecipeResponse
 
     @POST("recipes/generate")
     suspend fun generateRecipe(@Body reqBody: GenRecipeRequest): GeneratedResponse
@@ -54,7 +57,7 @@ interface ApiService {
     suspend fun getLogById(@Path("logId") logId: String): LogResponse
 
     @POST("food-logs")
-    suspend fun saveLog(@Body reqBody: SaveLogRequest)
+    suspend fun saveLog(@Body reqBody: SaveLogRequest): SaveLogResponse
 
     @GET("predict/calorie-intake")
     suspend fun getCalorieIntake(@Body reqBody: PredictCalorieRequest): PredictResponse

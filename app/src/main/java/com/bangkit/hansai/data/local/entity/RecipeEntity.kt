@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
-import java.util.Date
 
 @Parcelize
 @Entity(tableName = "recipe")
@@ -14,14 +13,14 @@ class RecipeEntity(
     @PrimaryKey
     var id: Int,
 
-    @field:ColumnInfo(name = "title")
-    var title: String,
+    @field:ColumnInfo(name = "name")
+    var name: String,
 
     @field:ColumnInfo(name = "ingredients")
     var ingredients: String,
 
-    @field:ColumnInfo(name = "steps")
-    var steps: String,
+    @field:ColumnInfo(name = "instructions")
+    var instructions: String,
 
     @field:ColumnInfo(name = "calories")
     var calories: Double,
@@ -34,8 +33,4 @@ class RecipeEntity(
 
     @field:ColumnInfo(name = "fat")
     var fat: Double,
-
-    @field:ColumnInfo(name = "last_update")
-    var lastUpdate: Date
-
 ) : Parcelable

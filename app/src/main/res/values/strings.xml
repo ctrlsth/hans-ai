@@ -77,7 +77,7 @@
     <string name="dinner">Dinner</string>
     <string name="kcal_placeholder">0 kcal</string>
     <string name="grams_placeholder">0 gr</string>
-    <string name="greetings_placeholder">Hello!</string>
+    <string name="greetings_placeholder">Hello, %1$s!</string>
     <string name="base_goal_unit">kcal</string>
     <string name="summary_lbs">" lbs • "</string>
     <string name="current_weight">Current Weight (in lbs)</string>

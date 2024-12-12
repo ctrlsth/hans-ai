@@ -49,13 +49,13 @@ class ViewRecipeActivity : AppCompatActivity() {
         val content = binding.content
 
         if (recipe != null) {
-            disableAndSetEditText(content.recipeTitle, recipe.title)
+            disableAndSetEditText(content.recipeTitle, recipe.name)
             disableAndSetEditText(
                 content.ingredients,
                 recipe.ingredients.split(",").joinToString("\n") { "    • ${it.trim()}" })
             disableAndSetEditText(
                 content.stepByStep,
-                recipe.steps.split("\n").joinToString("\n") { "    ${it.trim()}" })
+                recipe.instructions.split("\n").joinToString("\n") { "    ${it.trim()}" })
             disableAndSetEditText(content.inputCarbs, recipe.carbs.toString())
             disableAndSetEditText(content.inputProtein, recipe.protein.toString())
             disableAndSetEditText(content.inputFat, recipe.fat.toString())
