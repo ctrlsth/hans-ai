@@ -25,14 +25,13 @@ class RecipesAdapter : ListAdapter<RecipeEntity, RecipesAdapter.RecipesViewHolde
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeEntity) {
             // set up view here
-            binding.recipeTitle.text = recipe.title
+            binding.recipeTitle.text = recipe.name
             val totalCalories =
                 recipe.protein * 4 + recipe.carbs * 4 + recipe.fat * 9
-            binding.calories.text = String.format(Locale.getDefault(), "%d kcal", totalCalories)
-            binding.duration.text = String.format(Locale.getDefault(), "%d mins", recipe.duration)
+            binding.calories.text = String.format(Locale.getDefault(), "%.1f kcal", totalCalories)
             binding.actionButton.setOnClickListener { view ->
                 val popupMenu = PopupMenu(view.context, binding.actionButton)
-                popupMenu.inflate(R.menu.item_recipe_menu)
+                popupMenu.inflate(R.menu.rv_item_menu)
 
                 popupMenu.setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
@@ -84,7 +83,7 @@ class RecipesAdapter : ListAdapter<RecipeEntity, RecipesAdapter.RecipesViewHolde
                 oldItem: RecipeEntity,
                 newItem: RecipeEntity
             ): Boolean {
-                return oldItem.lastUpdate == newItem.lastUpdate
+                return oldItem.ingredients == newItem.ingredients
             }
         }
     }

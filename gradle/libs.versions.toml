@@ -21,6 +21,7 @@ roomKtx = "2.6.1"
 workRuntime = "2.10.0"
 preference = "1.2.1"
 activity = "1.9.3"
+annotation = "1.9.1"
 
 [libraries]
 android-async-http = { module = "com.loopj.android:android-async-http", version.ref = "androidAsyncHttp" }
@@ -46,6 +47,7 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

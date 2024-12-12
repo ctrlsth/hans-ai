@@ -49,21 +49,21 @@ class ViewRecipeActivity : AppCompatActivity() {
         val content = binding.content
 
         if (recipe != null) {
-            disableAndSetEditText(content.recipeTitle, recipe.title)
-            disableAndSetEditText(content.recipeDescription, recipe.description)
+            disableAndSetEditText(content.recipeTitle, recipe.name)
             disableAndSetEditText(
                 content.ingredients,
                 recipe.ingredients.split(",").joinToString("\n") { "    • ${it.trim()}" })
             disableAndSetEditText(
                 content.stepByStep,
-                recipe.steps.split("\n").joinToString("\n") { "    ${it.trim()}" })
+                recipe.instructions.split("\n").joinToString("\n") { "    ${it.trim()}" })
             disableAndSetEditText(content.inputCarbs, recipe.carbs.toString())
             disableAndSetEditText(content.inputProtein, recipe.protein.toString())
             disableAndSetEditText(content.inputFat, recipe.fat.toString())
 
             val totalCalories =
                 recipe.protein * 4 + recipe.carbs * 4 + recipe.fat * 9
-            content.totalCalorie.text = String.format(Locale.getDefault(), "%d kcal", totalCalories)
+            content.totalCalorie.text =
+                String.format(Locale.getDefault(), "%.1f kcal", totalCalories)
 
             content.saveButton.apply {
                 text = getString(R.string.redirect_button)

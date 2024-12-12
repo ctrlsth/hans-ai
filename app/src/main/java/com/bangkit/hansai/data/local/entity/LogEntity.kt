@@ -4,17 +4,19 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.bangkit.hansai.utils.Converters
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 
 @Parcelize
-@Entity(tableName = "recipe")
+@Entity(tableName = "log")
 class LogEntity(
     @field:ColumnInfo(name = "id")
     @PrimaryKey
-    var id: Int,
+    var id: String,
 
-    @field:ColumnInfo(name = "title")
+    @field:ColumnInfo(name = "logTitle")
     var title: String,
 
     @field:ColumnInfo(name = "summary")
@@ -24,27 +26,29 @@ class LogEntity(
     var date: Date,
 
     @field:ColumnInfo(name = "breakfast")
-    var breakfast: List<Int>,
+    var breakfast: List<String>,
 
     @field:ColumnInfo(name = "lunch")
-    var lunch: List<Int>,
+    var lunch: List<String>,
 
     @field:ColumnInfo(name = "dinner")
-    var dinner: List<Int>,
+    var dinner: List<String>,
 
-    @field:ColumnInfo(name = "calories")
-    var calories: Int,
+    @field:ColumnInfo(name = "base_goal")
+    var baseGoal: Double,
 
-    @field:ColumnInfo(name = "carbs")
-    var carbs: Int,
+    @field:ColumnInfo(name = "weight")
+    var weight: Double,
 
-    @field:ColumnInfo(name = "protein")
-    var protein: Int,
+    @field:ColumnInfo(name = "totalCalories")
+    var totalCalories: Double,
 
-    @field:ColumnInfo(name = "fat")
-    var fat: Int,
+    @field:ColumnInfo(name = "totalCarbs")
+    var totalCarbs: Double,
 
-    @field:ColumnInfo(name = "last_update")
-    var lastUpdate: Date
+    @field:ColumnInfo(name = "totalProtein")
+    var totalProtein: Double,
 
+    @field:ColumnInfo(name = "totalFat")
+    var totalFat: Double,
 ) : Parcelable

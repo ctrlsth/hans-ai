@@ -77,5 +77,20 @@
     <string name="dinner">Dinner</string>
     <string name="kcal_placeholder">0 kcal</string>
     <string name="grams_placeholder">0 gr</string>
-    <string name="greetings_placeholder">Hello!</string>
+    <string name="greetings_placeholder">Hello, %1$s!</string>
+    <string name="base_goal_unit">kcal</string>
+    <string name="summary_lbs">" lbs • "</string>
+    <string name="current_weight">Current Weight (in lbs)</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="placeholder_ingredients">Ayam, Nasi Merah, Lengkuas, …</string>
+    <string name="generate">Generate Recipe</string>
+    <string name="title_dialog">What\'s on your pantry?</string>
 </resources>
