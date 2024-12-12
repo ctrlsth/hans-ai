@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.preference)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.annotation)
 
     // Testing
     testImplementation(libs.junit)

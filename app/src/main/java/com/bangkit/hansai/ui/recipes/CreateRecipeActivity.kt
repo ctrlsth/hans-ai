@@ -28,6 +28,39 @@ class CreateRecipeActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.topAppBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val content = binding.content
+        content.saveButton.setOnClickListener {
+            when ("") {
+                content.recipeTitle.text.toString() -> {
+                    content.recipeTitle.error = "Title cannot be empty"
+                }
+
+                content.ingredients.text.toString() -> {
+                    content.ingredients.error = "Ingredients cannot be empty"
+                }
+
+                content.stepByStep.text.toString() -> {
+                    content.stepByStep.error = "Step by step cannot be empty"
+                }
+
+                content.inputCarbs.text.toString() -> {
+                    content.inputCarbs.error = "Carbs cannot be empty"
+                }
+
+                content.inputProtein.text.toString() -> {
+                    content.inputProtein.error = "Protein cannot be empty"
+                }
+
+                content.inputFat.text.toString() -> {
+                    content.inputFat.error = "Fat cannot be empty"
+                }
+
+                else -> {
+
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

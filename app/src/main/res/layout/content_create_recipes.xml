@@ -46,19 +46,6 @@
                     android:importantForAutofill="no"
                     tools:ignore="TouchTargetSizeCheck" />
 
-                <EditText
-                    android:id="@+id/recipeDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@null"
-                    android:hint="@string/add_summary"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                    android:textColorHint="?attr/colorOnSurfaceVariant"
-                    tools:ignore="TouchTargetSizeCheck" />
-
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

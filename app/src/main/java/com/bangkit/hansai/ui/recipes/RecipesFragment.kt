@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hansai.data.local.entity.RecipeEntity
 import com.bangkit.hansai.databinding.FragmentRecipesBinding
+import com.bangkit.hansai.ui.SearchActivity
 
 class RecipesFragment : Fragment() {
 
@@ -49,6 +50,11 @@ class RecipesFragment : Fragment() {
 
         binding.floatingActionButton.setOnClickListener {
             val intent = Intent(requireContext(), CreateRecipeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.searchBar.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(intent)
         }
 

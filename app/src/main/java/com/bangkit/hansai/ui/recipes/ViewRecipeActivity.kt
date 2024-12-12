@@ -50,7 +50,6 @@ class ViewRecipeActivity : AppCompatActivity() {
 
         if (recipe != null) {
             disableAndSetEditText(content.recipeTitle, recipe.title)
-            disableAndSetEditText(content.recipeDescription, recipe.description)
             disableAndSetEditText(
                 content.ingredients,
                 recipe.ingredients.split(",").joinToString("\n") { "    • ${it.trim()}" })

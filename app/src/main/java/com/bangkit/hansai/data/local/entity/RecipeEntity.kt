@@ -17,14 +17,14 @@ class RecipeEntity(
     @field:ColumnInfo(name = "title")
     var title: String,
 
-    @field:ColumnInfo(name = "description")
-    var description: String,
-
     @field:ColumnInfo(name = "ingredients")
     var ingredients: String,
 
     @field:ColumnInfo(name = "steps")
     var steps: String,
+
+    @field:ColumnInfo(name = "calories")
+    var calories: Double,
 
     @field:ColumnInfo(name = "carbs")
     var carbs: Double,
