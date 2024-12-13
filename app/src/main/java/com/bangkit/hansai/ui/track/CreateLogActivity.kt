@@ -8,15 +8,16 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hansai.data.local.entity.LogEntity
 import com.bangkit.hansai.data.local.entity.RecipeEntity
 import com.bangkit.hansai.databinding.ActivityCreateLogBinding
 import com.bangkit.hansai.ui.MainActivity
+import com.bangkit.hansai.ui.factory.LogViewModelFactory
 import com.bangkit.hansai.ui.recipes.RecipesAdapter
 import com.bangkit.hansai.ui.recipes.ViewRecipeActivity
 import java.text.SimpleDateFormat
@@ -28,8 +29,10 @@ class CreateLogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val trackViewModel =
-            ViewModelProvider(this)[TrackViewModel::class.java]
+        val factory: LogViewModelFactory = LogViewModelFactory.getInstance(this@CreateLogActivity)
+        val trackViewModel: TrackViewModel by viewModels {
+            factory
+        }
 
         binding = ActivityCreateLogBinding.inflate(layoutInflater)
         setContentView(binding.root)
