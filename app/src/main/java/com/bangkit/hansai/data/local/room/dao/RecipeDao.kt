@@ -13,6 +13,9 @@ interface RecipeDao {
     @Query("SELECT * FROM recipe ORDER BY id ASC")
     fun getAll(): LiveData<List<RecipeEntity>>
 
+    @Query("SELECT * FROM recipe WHERE name = :name")
+    fun getByName(name: String): LiveData<List<RecipeEntity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(recipe: List<RecipeEntity>)
 

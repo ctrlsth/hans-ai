@@ -3,6 +3,7 @@ package com.bangkit.hansai.data.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.map
 import com.bangkit.hansai.data.local.entity.RecipeEntity
 import com.bangkit.hansai.data.local.room.dao.RecipeDao
 import com.bangkit.hansai.data.remote.request.CreateRecipeRequest
@@ -39,14 +40,19 @@ class RecipeRepository private constructor(
                 withContext(Dispatchers.IO) {
                     recipeDao.insert(recipeList)
                 }
-                liveData {
-                    emit(Result.Success(recipeList))
-                }
             }
         } catch (e: Exception) {
             Log.d("RecipeRepository", e.toString())
             emit(Result.Error(e.message.toString()))
         }
+        val localData: LiveData<Result<List<RecipeEntity>>> =
+            recipeDao.getAll().map { Result.Success(it) }
+        emitSource(localData)
+        Log.d("RecipeRepository", "Data submitted to adapter: $localData")
+    }
+
+    fun searchRecipes(query: String): LiveData<List<RecipeEntity>> {
+        return recipeDao.getByName("%${query}%")
     }
 
     suspend fun createRecipe(reqBody: CreateRecipeRequest): Result<String> {
