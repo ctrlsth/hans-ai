@@ -8,15 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hansai.data.local.entity.RecipeEntity
 import com.bangkit.hansai.data.repository.Result
 import com.bangkit.hansai.databinding.FragmentRecipesBinding
 import com.bangkit.hansai.ui.SearchActivity
 import com.bangkit.hansai.ui.factory.RecipeViewModelFactory
-import com.bangkit.hansai.ui.factory.UserViewModelFactory
-import com.bangkit.hansai.ui.home.HomeViewModel
 
 class RecipesFragment : Fragment() {
 
@@ -46,6 +43,24 @@ class RecipesFragment : Fragment() {
             adapter = recipesAdapter
         }
 
+        recipesViewModel.getRecipes().observe(viewLifecycleOwner) { result ->
+            Log.d("RecipesViewModel", "Result: $result")
+            when (result) {
+                is Result.Loading -> {
+                    Log.d("RecipesViewModel", "Loading...")
+                }
+
+                is Result.Success -> {
+                    recipesAdapter.submitList(result.data)
+                    Log.d("RecipesViewModel", "Data submitted to adapter: ${result.data}")
+                }
+
+                is Result.Error -> {
+                    Log.d("RecipesViewModel", "Error: ${result.error}")
+                }
+            }
+        }
+
         recipesAdapter.apply {
             setOnItemClickCallback(object : RecipesAdapter.OnItemClickCallback {
                 override fun onItemClicked(recipe: RecipeEntity) {
@@ -54,22 +69,6 @@ class RecipesFragment : Fragment() {
                     startActivity(intent)
                 }
             })
-        }
-
-        recipesViewModel.getRecipes().observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Result.Loading -> {
-                    Log.d("RecipesViewModel", "Loading...")
-                }
-
-                is Result.Success -> {
-                    recipesAdapter.submitList(result.data)
-                }
-
-                is Result.Error -> {
-                    Log.d("RecipesViewModel", "Error: ${result.error}")
-                }
-            }
         }
 
         binding.floatingActionButton.setOnClickListener {

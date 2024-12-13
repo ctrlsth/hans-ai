@@ -93,4 +93,8 @@
     <string name="placeholder_ingredients">Ayam, Nasi Merah, Lengkuas, …</string>
     <string name="generate">Generate Recipe</string>
     <string name="title_dialog">What\'s on your pantry?</string>
+    <string name="trophy_icon">Trophy Icon</string>
+    <string name="current_weight_title">Current Weight</string>
+    <string name="target_weight_title">Target Weight</string>
+    <string name="lbs_placeholder">0 lbs</string>
 </resources>
