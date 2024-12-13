@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -53,6 +54,21 @@ class CreateRecipeActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val content = binding.content
+        content.inputCarbs.setOnEditorActionListener { _, _, _ ->
+            updateTotalCalories()
+            true
+        }
+
+        content.inputProtein.setOnEditorActionListener { _, _, _ ->
+            updateTotalCalories()
+            true
+        }
+
+        content.inputFat.setOnEditorActionListener { _, _, _ ->
+            updateTotalCalories()
+            true
+        }
+
         content.saveButton.setOnClickListener {
             when ("") {
                 content.recipeTitle.text.toString() -> {
@@ -136,28 +152,35 @@ class CreateRecipeActivity : AppCompatActivity() {
             val listIngredients = ingredientList
                 .split(",")
                 .map { it.trim() }
+
             try {
                 recipesViewModel.generateRecipe(listIngredients).observe(this) { result ->
                     when (result) {
                         is Result.Loading -> {
                             Log.d("RecipesViewModel", "Loading...")
+                            dialog.setCanceledOnTouchOutside(false)
+                            saveButton.isEnabled = false
+                            saveButton.text = "Generating..."
                         }
 
                         is Result.Success -> {
                             val recipe = result.data
                             populateInputs(recipe)
                             ingredients.text.clear()
+                            dialog.setCanceledOnTouchOutside(true)
                             dialog.dismiss()
                         }
 
                         is Result.Error -> {
                             Toast.makeText(this, "Generate Error", Toast.LENGTH_SHORT).show()
                             Log.d("RecipesViewModel", "Error: ${result.error}")
+                            dialog.setCanceledOnTouchOutside(true)
                         }
                     }
                 }
             } catch (e: Exception) {
                 Log.d("RecipesViewModel", "Error: ${e.message}")
+                dialog.setCanceledOnTouchOutside(true)
             }
         }
         dialog.show()
@@ -189,6 +212,20 @@ class CreateRecipeActivity : AppCompatActivity() {
                 recipe.lemak
             )
         )
+        content.totalCalorie.text = String.format(
+            Locale.getDefault(),
+            "%.2f",
+            recipe.karbohidrat * 4 + recipe.protein * 4 + recipe.lemak * 9
+        )
+    }
+
+    private fun updateTotalCalories() {
+        val content = binding.content
+        val carbs = content.inputCarbs.text.toString().toDoubleOrNull() ?: 0.0
+        val protein = content.inputProtein.text.toString().toDoubleOrNull() ?: 0.0
+        val fat = content.inputFat.text.toString().toDoubleOrNull() ?: 0.0
+        val totalCalories = carbs * 4 + protein * 4 + fat * 9
+        content.totalCalorie.text = totalCalories.toString()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
